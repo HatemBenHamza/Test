@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2>Liste des Coureurs</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nom</th>
+                  <th>Ville</th>
+                   <th>Nom Entraineur</th>
+                  <th><th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for Coureur in Coureurs %}
+               <tr>
+              <td>{{Coureur.getNumCoureur()}}</td>
+              <td>{{Coureur.nomCoureur}}</td>
+              <td>{{Coureur.villeCoureur}}</td>
+              <td>{{Coureur.getEntraineur().nomEntr}}</td>
+              <td><a href="{{path('delete_action', {'numCoureur':Coureur.numCoureur})}}" class="btn btn-danger">Supprimer</td>
+              </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}

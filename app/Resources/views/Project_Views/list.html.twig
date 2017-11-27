@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nom</th>
+                  <th>Ville</th>
+                   <th></th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+               {% for participe in participes %}
+               <tr>
+              <td>{{participe.ordre}}</td>
+              <td>{{participe.getCoureur().nomCoureur}}</td>
+              <td>{{participe.getCoureur().villeCoureur}}</td>
+              <td ><input type="checkbox" name="{{participe.getId()}}" id="check" ></td>
+            
+              
+              </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+            <center><a href="javascript:void(0);" onclick="javascript:deletePart()" class="btn btn-danger" >supprimer </a>
+          </center>
+          </div>
+        
+        
+		
+    <script type="text/javascript">
+			
+        
+         function deletePart(){
+           var checkboxes = document.getElementsByTagName('input');
+       var checkboxesChecked = [];
+       var ChecksIds = [] ;
+      
+          for (var i=0; i<checkboxes.length; i++) {
+             if (checkboxes[i].checked) {
+                           
+                           ChecksIds.push(checkboxes[i].name);
+                
+                }
+         }
+
+         console.log(ChecksIds);
+         window.location.href= "{{path('delete_part')}}?id[]="+ChecksIds;
+
+     }
+
+		</script>
+        
+{% endblock %}

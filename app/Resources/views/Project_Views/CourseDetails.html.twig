@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2>Liste des participants</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Ville</th>
+                  <th><th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for Coureur in Coureurs %}
+               <tr>
+              <td>{{Coureur.NomCour}}</td>
+              <td>{{Coureur.VilleCour}}</td>
+              <td><a href="{{path('delete_action', {'numCour':Coureur.numCour})}}" class="btn btn-danger">Supprimer</td>
+              </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+
+
